@@ -1,0 +1,37 @@
+{
+  "name": "lucatume/intercooler",
+  "description": "Intercooler.js for WordPress",
+  "type": "wordpress-plugin",
+  "license": "GPL 2.0",
+  "authors": [
+    {
+      "name": "Luca Tumedei",
+      "email": "luca@theaveragedev.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require-dev": {
+    "xrstf/composer-php52": "1.*"
+  },
+  "autoload": {
+    "psr-0": {
+      "IC_": "src/"
+    }
+  },
+  "scripts": {
+    "command": [
+      "grunt pre-composer-update --verbose"
+    ],
+    "post-install-cmd": [
+      "xrstf\\Composer52\\Generator::onPostInstallCmd",
+      "grunt after-composer-update --verbose"
+    ],
+    "post-update-cmd": [
+      "xrstf\\Composer52\\Generator::onPostInstallCmd",
+      "grunt after-composer-update --verbose"
+    ],
+    "post-autoload-dump": [
+      "xrstf\\Composer52\\Generator::onPostInstallCmd"
+    ]
+  }
+}

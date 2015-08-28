@@ -1,0 +1,15 @@
+{
+  "name": "intercooler",
+  "version": "1.0.0",
+  "authors": [
+    "Luca Tumedei <luca@theaveragedev.com>"
+  ],
+  "description": "Intercooler.js for WordPress",
+  "main": "intercooler.php",
+  "keywords": [
+    "wordpress",
+    "plugin"
+  ],
+  "license": "GPL 2.0",
+  "homepage": "http://theaveragedev.com"
+}
