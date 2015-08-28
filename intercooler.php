@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Intercooler
+ * Plugin Name: Intercooler.js
  * Plugin URI:  http://theaveragedev.com
  * Description: Intercooler.js for WordPress
  * Version:     0.1.0

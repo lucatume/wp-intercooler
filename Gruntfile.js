@@ -1,4 +1,4 @@
-module.exports = function( grunt ) {
+module.exports = function ( grunt ) {
 
 
 	// Read dependencies from composer
@@ -13,24 +13,24 @@ module.exports = function( grunt ) {
 		clean_dist_patterns = ['vendor/composer/installed.json'],
 		git_add_patterns = ['vendor/autoload*.php', 'vendor/composer/{autoload_*,ClassLoader*}.php'];
 
-		for ( i = 0; i < dependencies.length; i++ ) {
-			git_add_patterns.push( dependencies[i] + '**' );
-			for ( k = 0; k < delete_patterns.length; k++ ) {
-				clean_dist_patterns.push( dependencies[i] + '/' + delete_patterns[k] );
-			}
+	for ( var i = 0; i < dependencies.length; i++ ) {
+		git_add_patterns.push( dependencies[i] + '**' );
+		for ( var k = 0; k < delete_patterns.length; k++ ) {
+			clean_dist_patterns.push( dependencies[i] + '/' + delete_patterns[k] );
+		}
 	}
-		
+
 	// Project configuration
 	grunt.initConfig( {
-		pkg:    grunt.file.readJSON( 'package.json' ),
+		pkg: grunt.file.readJSON( 'package.json' ),
 		concat: {
 			options: {
 				stripBanners: true,
 				banner: '/*! <%= pkg.title %> - v<%= pkg.version %>\n' +
-					' * <%= pkg.homepage %>\n' +
-					' * Copyright (c) <%= grunt.template.today("yyyy") %>;' +
-					' * Licensed GPLv2+' +
-					' */\n'
+				' * <%= pkg.homepage %>\n' +
+				' * Copyright (c) <%= grunt.template.today("yyyy") %>;' +
+				' * Licensed GPLv2+' +
+				' */\n'
 			},
 			intercooler: {
 				src: [
@@ -46,71 +46,72 @@ module.exports = function( grunt ) {
 				'assets/js/test/**/*.js'
 			],
 			options: {
-				curly:   true,
-				eqeqeq:  true,
-				immed:   true,
+				curly: true,
+				eqeqeq: true,
+				immed: true,
 				latedef: true,
-				newcap:  true,
-				noarg:   true,
-				sub:     true,
-				undef:   true,
-				boss:    true,
-				eqnull:  true,
+				newcap: true,
+				noarg: true,
+				sub: true,
+				undef: true,
+				boss: true,
+				eqnull: true,
 				globals: {
 					exports: true,
-					module:  false
+					module: false
 				}
-			}		
+			}
 		},
 		uglify: {
 			all: {
 				files: {
-					'assets/js/intercooler.min.js': ['assets/js/intercooler.js']
+					'assets/js/intercooler.min.js': ['assets/js/intercooler.js'],
+					'assets/vendor/intercooler-js/strict/intercooler.min.js': ['assets/vendor/intercooler-js/strict/intercooler.js']
 				},
 				options: {
 					banner: '/*! <%= pkg.title %> - v<%= pkg.version %>\n' +
-						' * <%= pkg.homepage %>\n' +
-						' * Copyright (c) <%= grunt.template.today("yyyy") %>;' +
-						' * Licensed GPLv2+' +
-						' */\n',
+					' * <%= pkg.homepage %>\n' +
+					' * Copyright (c) <%= grunt.template.today("yyyy") %>;' +
+					' * Licensed GPLv2+' +
+					' */\n',
 					mangle: {
 						except: ['jQuery']
 					}
 				}
 			}
 		},
-		test:   {
+		test: {
 			files: ['assets/js/test/**/*.js']
 		},
-		
-		sass:   {
+
+		sass: {
 			all: {
 				files: {
 					'assets/css/intercooler.css': 'assets/css/sass/intercooler.scss'
 				}
 			}
 		},
-		
+
 		cssmin: {
 			options: {
 				banner: '/*! <%= pkg.title %> - v<%= pkg.version %>\n' +
-					' * <%= pkg.homepage %>\n' +
-					' * Copyright (c) <%= grunt.template.today("yyyy") %>;' +
-					' * Licensed GPLv2+' +
-					' */\n'
+				' * <%= pkg.homepage %>\n' +
+				' * Copyright (c) <%= grunt.template.today("yyyy") %>;' +
+				' * Licensed GPLv2+' +
+				' */\n'
 			},
 			minify: {
 				expand: true,
-				
-				cwd: 'assets/css/',				
+
+				cwd: 'assets/css/',
 				src: ['intercooler.css'],
-				
+
 				dest: 'assets/css/',
 				ext: '.min.css'
 			}
 		},
-		watch:  {
-			
+		watch: {
+
 			sass: {
 				files: ['assets/css/sass/*.scss'],
 				tasks: ['sass', 'cssmin'],
@@ -118,9 +119,9 @@ module.exports = function( grunt ) {
 					debounceDelay: 500
 				}
 			},
-			
+
 			scripts: {
-				files: ['assets/js/src/**/*.js', 'assets/js/vendor/**/*.js'],
+				files: ['assets/js/src/**/*.js', 'assets/js/vendor/**/*.js', 'assets/vendor/intercooler-js/strict/intercooler.js'],
 				tasks: ['jshint', 'concat', 'uglify'],
 				options: {
 					debounceDelay: 500
@@ -141,27 +142,43 @@ module.exports = function( grunt ) {
 					src: git_add_patterns
 				}
 			}
-		}	
+		},
+		replace: {
+			vendor: {
+				options: {
+					patterns: [
+						{
+							match: /\$/gm,
+							replacement: 'jQuery'
+						}
+					]
+				},
+				files: [
+					{expand: true, flatten: true, src: ['assets/vendor/intercooler-js/src/intercooler.js'], dest: 'assets/vendor/intercooler-js/strict'}
+				]
+			}
+		}
 	} );
-	
+
 	// Load other tasks
-	grunt.loadNpmTasks('grunt-contrib-jshint');
-	grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-cssmin');
-	
-	grunt.loadNpmTasks('grunt-contrib-sass');
-	
-	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks( 'grunt-contrib-jshint' );
+	grunt.loadNpmTasks( 'grunt-contrib-concat' );
+	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
+	grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
+
+	grunt.loadNpmTasks( 'grunt-contrib-sass' );
+
+	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 	grunt.loadNpmTasks( 'grunt-contrib-clean' );
 	grunt.loadNpmTasks( 'grunt-git' );
-	
+	grunt.loadNpmTasks( 'grunt-replace' );
+
 	// Default task.
-	
+
 	grunt.registerTask( 'default', ['jshint', 'concat', 'uglify', 'sass', 'cssmin'] );
-	
+
 	grunt.registerTask( 'pre-composer-update', ['clean:pre-update'] );
-	grunt.registerTask( 'after-composer-update', ['clean:dist'] );
+	grunt.registerTask( 'after-composer-update', ['clean:dist', 'replace:vendor', 'gitadd:dist'] );
 
 	grunt.util.linefeed = '\n';
 };

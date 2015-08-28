@@ -1,8 +1,9 @@
 {
   "name": "intercooler",
-  "title": "Intercooler",
+  "title": "Intercooler.js",
   "description": "Intercooler.js for WordPress",
   "version": "0.1.0",
+  "license": "GPL 2.0",
   "homepage": "http://theaveragedev.com",
   "author": {
     "name": "Luca Tumedei",
@@ -11,15 +12,21 @@
   },
   "devDependencies": {
     "grunt": "~0.4.5",
+    "grunt-contrib-clean": "~0.6.0",
     "grunt-contrib-concat": "~0.5.0",
-    "grunt-contrib-uglify": "~0.6.0",
     "grunt-contrib-cssmin": "~0.10.0",
     "grunt-contrib-jshint": "~0.10.0",
     "grunt-contrib-nodeunit": "~0.4.1",
+    "grunt-contrib-sass": "~0.8.0",
+    "grunt-contrib-uglify": "~0.6.0",
     "grunt-contrib-watch": "~0.6.1",
-    "grunt-contrib-clean": "~0.6.0",
     "grunt-git": "~0.3.5",
-    "grunt-contrib-sass": "~0.8.0"
+    "grunt-replace": "^0.10.2"
   },
-  "keywords": []
+  "keywords": [
+    "wordress",
+    "plugin",
+    "ajax",
+    "intercooler"
+  ]
 }

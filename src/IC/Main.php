@@ -22,6 +22,11 @@ class IC_Main {
 	}
 
 	public function vendor( $file ) {
+		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
+			$_file = str_replace( '.min.js', '.js', $file );
+			$file  = file_exists( IC_PATH . 'assets/vendor/' . $_file ) ? $_file : $file;
+		}
+
 		return IC_URL . 'assets/vendor/' . $file;
 	}
 
@@ -56,9 +61,7 @@ class IC_Main {
 		if ( ! $should_enqueue ) {
 			return;
 		}
-		$src = $this->vendor( 'intercooler-js/src/intercooler.js' );
+		$src = $this->vendor( 'intercooler-js/strict/intercooler.min.js' );
 		wp_enqueue_script( 'intercooler', $src, $this->dependencies(), $this->ic_version(), true );
 	}
-
-
 }
