@@ -31,7 +31,7 @@ class IC_Main {
 	}
 
 	public function enqueue() {
-		$this->ic_enqueue( 'ic/admin/enqueue_scripts', true );
+		$this->ic_enqueue( 'ic/enqueue_scripts', true );
 	}
 
 	public function enqueue_admin() {
