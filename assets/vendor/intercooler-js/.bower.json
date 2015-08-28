@@ -1,0 +1,32 @@
+{
+  "name": "intercooler-js",
+  "version": "0.4.10",
+  "homepage": "https://github.com/LeadDyno/intercooler-js",
+  "main": "src/intercooler.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "build",
+    "speed",
+    "test",
+    "*.md",
+    "AUTHORS.txt",
+    "Gruntfile.js",
+    "package.json"
+  ],
+  "keywords": [
+    "intercooler",
+    "ajax",
+    "intercoolerjs"
+  ],
+  "_release": "0.4.10",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.4.10",
+    "commit": "49f75bff85b842db6f4b64c91680b0e8e906a7f6"
+  },
+  "_source": "git://github.com/LeadDyno/intercooler-js.git",
+  "_target": "~0.4.10",
+  "_originalSource": "intercooler-js",
+  "_direct": true
+}

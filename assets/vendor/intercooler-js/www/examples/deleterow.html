@@ -1,0 +1,106 @@
+---
+layout: default
+nav: tutorial
+---
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-12">
+
+      <h1>Deleting A Table Row</h1>
+
+      <p>This example demos a delete button that removes a table row upon completion.  A confirmation popup is specified
+      at the tbody level, so all buttons share the same confirmation message.</p>
+
+      <p>Note that the "server side" implementation is mocked out using mockjax, so you can see the entire
+        implementation. Click the "Source Code" tab to see the code.</p>
+
+      <div>
+        <ul class="demo-nav nav nav-pills">
+          <li role="presentation" class="active"><a href="#demo" aria-controls="demo" role="tab" data-toggle="tab">Live
+            Demo</a></li>
+          <li role="presentation"><a href="#code" aria-controls="demo" role="tab" data-toggle="tab">Source Code</a></li>
+        </ul>
+      </div>
+
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="demo">
+
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody ic-confirm="Are you sure?" ic-target="closest tr">
+      <tr id="row-0">
+        <td>Joe Smith</td>
+        <td>joe@smith.org</td>
+        <td>Active</td>
+        <td>
+          <button class="btn btn-danger" ic-delete-from="/contacts/0">
+            Delete
+            <i class="ic-indicator fa fa-spinner fa-spin" style="display: none"></i>
+          </button>
+        </td>
+      </tr>
+      <tr id="row-1">
+        <td>Angie MacDowell</td><td>angie@macdowell.org</td><td>Active</td>
+        <td>
+          <button class="btn btn-danger" ic-delete-from="/contacts/1">
+            Delete
+            <i class="ic-indicator fa fa-spinner fa-spin" style="display: none"></i>
+          </button>
+        </td>
+      </tr>
+      <tr id="row-2">
+        <td>Fuqua Tarkenton</td><td>fuqua@tarkenton.org</td><td>Active</td>
+        <td>
+          <button class="btn btn-danger" ic-delete-from="/contacts/2">
+            Delete
+            <i class="ic-indicator fa fa-spinner fa-spin" style="display: none"></i>
+          </button>
+        </td>
+      </tr>
+      <tr id="row-3">
+        <td>Kim Yee</td><td>kim@yee.org</td><td>Inactive</td>
+        <td>
+          <button class="btn btn-danger" ic-delete-from="/contacts/3">
+            Delete
+            <i class="ic-indicator fa fa-spinner fa-spin" style="display: none"></i>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </form>
+
+  <script>
+
+    //========================================================================
+    // Mock Server-Side HTTP End Point
+    //========================================================================
+    $.mockjax({
+      url: /\/contacts\/.*/,
+      responseTime: 750,
+      headers : { 'X-IC-Remove' : "true" }
+    });
+
+  </script>
+  </div>
+        <div role="tabpanel" class="tab-pane" id="code">
+          <pre id="src-pre"></pre>
+        </div>
+      </div>
+
+    </div>
+    <script>
+      $("#src-pre").text($("#demo").html());
+    </script>
+
+  </div>
+</div>

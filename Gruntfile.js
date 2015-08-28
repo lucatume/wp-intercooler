@@ -11,7 +11,7 @@ module.exports = function ( grunt ) {
 
 	var delete_patterns = [".git/**", "tests/**", ".gitignore", "**.md", "Gruntfile.js", "example-functions.php", "composer.{json,lock}", "{.travis,.scrutinizer,codeception*,}.yml", "coverage.clover", "phpunit.xml.dist"],
 		clean_dist_patterns = ['vendor/composer/installed.json'],
-		git_add_patterns = ['vendor/autoload*.php', 'vendor/composer/{autoload_*,ClassLoader*}.php'];
+		git_add_patterns = ['vendor/autoload*.php', 'vendor/composer/{autoload_*,ClassLoader*}.php','assets/vendor/**/*'];
 
 	for ( var i = 0; i < dependencies.length; i++ ) {
 		git_add_patterns.push( dependencies[i] + '**' );
