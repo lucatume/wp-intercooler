@@ -11,5 +11,8 @@
     "plugin"
   ],
   "license": "GPL 2.0",
-  "homepage": "http://theaveragedev.com"
+  "homepage": "http://theaveragedev.com",
+  "resolutions": {
+    "intercooler-js": "~0.9.0"
+  }
 }
