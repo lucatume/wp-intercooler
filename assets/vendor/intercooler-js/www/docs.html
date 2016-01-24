@@ -21,6 +21,7 @@ nav: docs
           <li><a href="#polling">Polling</a></li>
           <li><a href="#progress">Progress Indicators</a></li>
           <li><a href="#transitions">CSS Element Transitions</a></li>
+          <li><a href="#client-side">Client Side Tools</a></li>
           <li><a href="#history">History<sub>BETA</sub></a></li>
           <li><a href="#requests">Anatomy of an Intercooler Request</a></li>
           <li><a href="#responses">Anatomy of an Intercooler Response</a></li>
@@ -111,7 +112,7 @@ nav: docs
 
       <pre style="width:90%">
   &lt;script src="https://code.jquery.com/jquery-1.10.2.min.js">&lt;/script>
-  &lt;script src="https://intercoolerreleases-leaddynocom.netdna-ssl.com/intercooler-0.9.0.min.js">&lt;/script>
+  &lt;script src="https://intercoolerreleases-leaddynocom.netdna-ssl.com/intercooler-0.9.3.min.js">&lt;/script>
       </pre>
 
         <p>If you are using <a href="http://bower.io/">Bower</a>, the package name for Intercooler is
@@ -159,6 +160,13 @@ nav: docs
           </script>
           <button class="btn btn-primary" ic-post-to="/put_demo">Put Me!</button>
         </div>
+
+        <p><b>Note:</b> if you wish to use the <code>data-*</code> prefix for intercooler attributes, you can add the following
+        meta tag to your head section: </p>
+
+        <p>
+          <code>&lt;meta name="intercoolerjs:use-data-prefix" content="true"/></code>
+        </p>
 
       </section>
 
@@ -361,6 +369,17 @@ nav: docs
           <span id="form-target">Submit the form above...</span>
         </div>
 
+        <h3>File Uploads</h3>
+
+        <p>File uploads can be accomplished with intercooler by adding the <code>enctype='multipart/form-data'</code>
+        to a form that is set up to submit via intercooler.  When intercooler detects this, it will use the
+        <a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects"><code>FormData</code></a> object
+        for creating the request, which will include any file inputs.</p>
+
+        <p>Note that <code>FormData</code> is only available as of IE10.  Also be aware that sub-elements within the form
+        that trigger their own AJAX requests (e.g. an input that triggers on change) will <b>not</b> be submitted as
+        <code>multipart/form-data</code> requests, and will therefore not include any files.</p>
+
       </section>
 
       <section>
@@ -384,6 +403,9 @@ nav: docs
             This span will poll the server every two seconds...
           &lt;/span>
         </pre>
+
+        <p>Note that if you want the polling element to load data immediately after the page renders,
+          you can add the attribute <code>ic-trigger-on="load"</code></p>
 
         <div class="live-demo">
           <style>
@@ -676,6 +698,16 @@ nav: docs
           app,
           and they are fun to play with. (Just don't overdo it.)</p>
 
+
+      <section>
+        <a class="anchor" id="client-side"></a>
+
+        <h2>Client-Side Tools</h2>
+
+        <p>Intercooler is primarily a library for making AJAX calls, but it does provide some simple but
+        powerful tools for doing client-side DOM manipulation, allowing you to implement many client-side
+        needs using only a few attributes:</p>
+
         <h3>Adding &amp; Removing Classes After A Delay</h3>
 
         <p>In order to fine tune transitions or provide other visual easements in your app, you may find yourself
@@ -732,6 +764,36 @@ nav: docs
             });
           </script>
           <a ic-post-to="/remove_after" ic-target="#flash-span">Click Me!</a> <span id="flash-span"></span>
+        </div>
+
+        <h3>Client-Side Actions</h3>
+
+        <p>Sometimes it is useful to have a purely-client side action in response to a given action trigger.  A
+          good example is if you wish simply to remove a element when another element is clicked, without a server
+          request.  Intercooler provides the <code><a href="/attributes/ic-action.html">ic-action</a></code> attribute
+          for this situation.</p>
+
+        <p>The full details of the syntax for this attribute are available on the detail page for it, but here are
+        a few examples:</p>
+
+        <pre>
+   &lt;a ic-action="fadeOut;remove">Fade Then Remove Me!&lt;/a>
+        </pre>
+
+        <div class="live-demo">
+          <a class="btn btn-primary" ic-action="fadeOut;remove">Fade Then Remove Me!</a>
+        </div>
+
+        <pre>
+  &lt;a ic-action="slideToggle" ic-target="#chesterton-quote">Toggle Chesterton!&lt;/a>
+        </pre>
+
+        <div class="live-demo">
+          <a class="btn btn-primary" ic-action="slideToggle" ic-target="#chesterton-quote">Toggle Chesterton!</a>
+          <blockquote id="chesterton-quote" style="display: none">
+            “Without education, we are in a horrible and deadly danger of taking educated people seriously.”<br/>
+            --GK Chesterton
+          </blockquote>
         </div>
 
       </section>

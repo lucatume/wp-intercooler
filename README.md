@@ -3,7 +3,7 @@
 
 ## Installation
 Download the zip file and copy it in the WordPress plugin folder, activate it.  
-This plugin does nothing but enqueue [intercooler.js](http://intercoolerjs.org/) script on the page, no menus or settings are available.
+This plugin does nothing but enqueue [intercooler.js](http://intercoolerjs.org/) version `0.9.3` script on the page, no menus or settings are available.
 
 ## Filters
 By default the plugin will enqueue the library on the front-end only and not on the back-end (the admin area).  

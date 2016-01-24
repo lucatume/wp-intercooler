@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AAAA;;;;;;GAMG",
+"sources": ["sass/intercooler.scss"],
 "names": [],
 "file": "intercooler.css"
 }

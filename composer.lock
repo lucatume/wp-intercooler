@@ -5,6 +5,7 @@
         "This file is @generated automatically"
     ],
     "hash": "4deaade77b0328ba590ac365020e4188",
+    "content-hash": "8a1a941e37090bc9a76cf88e8e8a954c",
     "packages": [],
     "packages-dev": [
         {
@@ -13,12 +14,12 @@
             "source": {
                 "type": "hg",
                 "url": "https://bitbucket.org/xrstf/composer-php52",
-                "reference": "1ff7517a885cad1aa42b370f926b308a2f9b5766"
+                "reference": "724d62b7fdcf102a6c4097f5f1c2026f124583a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/xrstf/composer-php52/get/1ff7517a885cad1aa42b370f926b308a2f9b5766.zip",
-                "reference": "1ff7517a885cad1aa42b370f926b308a2f9b5766",
+                "url": "https://bitbucket.org/xrstf/composer-php52/get/724d62b7fdcf102a6c4097f5f1c2026f124583a5.zip",
+                "reference": "724d62b7fdcf102a6c4097f5f1c2026f124583a5",
                 "shasum": ""
             },
             "type": "library",
@@ -37,7 +38,7 @@
                 "MIT"
             ],
             "homepage": "http://www.xrstf.de/",
-            "time": "2015-08-07 21:46:00"
+            "time": "2015-10-01 12:12:30"
         }
     ],
     "aliases": [],

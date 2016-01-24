@@ -11,7 +11,7 @@ class IC_Main {
 	 * @var self
 	 */
 	protected static $instance;
-	protected        $version = '0.40.10';
+	protected        $version = '0.9.3';
 
 	public static function instance() {
 		if ( empty( self::$instance ) ) {
