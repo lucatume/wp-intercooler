@@ -50,5 +50,8 @@ See the [library homepage](http://intercoolerjs.org/).
 
 == Changelog ==
 
+= 1.0.1 =
+* removed auto-run of Grunt commands from `composer.json` files
+
 = 1.0.0 =
 * first release, packs intercooler-js v. 0.9.3
